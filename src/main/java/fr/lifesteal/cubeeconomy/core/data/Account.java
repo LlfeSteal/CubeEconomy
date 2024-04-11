@@ -4,7 +4,7 @@ import java.util.UUID;
 
 public class Account {
 
-    private UUID playerUUID;
+    private final UUID playerUUID;
     private double amount;
 
     public Account(UUID playerUUID, double amount) {

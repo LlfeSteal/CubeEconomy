@@ -17,27 +17,16 @@ public class CommandDispatcher {
         if (args.length > 0) {
             String command = args[0];
             switch (command) {
-                case "balance":
-                    genericMoneyCommand = new BalanceCommand(configurationService, player, args);
-                    break;
-                case "pay":
-                    genericMoneyCommand = new PayCommand(configurationService, player, args);
-                    break;
-                case "give":
-                    genericMoneyCommand = new GiveCommand(configurationService, player, args);
-                    break;
-                case "take":
-                    genericMoneyCommand = new TakeCommand(configurationService, player, args);
-                    break;
-                case "set":
-                    genericMoneyCommand = new SetCommand(configurationService, player, args);
-                    break;
-                case "giveall":
-                    genericMoneyCommand = new GiveAllCommand(configurationService, player, args);
-                    break;
-                default:
+                case "balance" -> genericMoneyCommand = new BalanceCommand(configurationService, player, args);
+                case "pay" -> genericMoneyCommand = new PayCommand(configurationService, player, args);
+                case "give" -> genericMoneyCommand = new GiveCommand(configurationService, player, args);
+                case "take" -> genericMoneyCommand = new TakeCommand(configurationService, player, args);
+                case "set" -> genericMoneyCommand = new SetCommand(configurationService, player, args);
+                case "giveall" -> genericMoneyCommand = new GiveAllCommand(configurationService, player, args);
+                default -> {
                     Utils.sendPlayerMessage(configurationService.getPluginPrefix(), player, configurationService.getMessage("invalid-command"));
                     return false;
+                }
             }
         } else {
             genericMoneyCommand = new BalanceCommand(configurationService, player, args);

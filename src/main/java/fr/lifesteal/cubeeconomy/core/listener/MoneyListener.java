@@ -1,7 +1,6 @@
 package fr.lifesteal.cubeeconomy.core.listener;
 
 import fr.lifesteal.cubeeconomy.core.CubeEconomy;
-import fr.lifesteal.cubeeconomy.core.utils.Utils;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

@@ -15,10 +15,6 @@ public class Utils {
         return string.replaceAll(regex, Matcher.quoteReplacement(replace));
     }
 
-    public static void log(String message) {
-        System.out.println("[CubeEconomy] " + message);
-    }
-
     public static void sendPlayerMessage(String prefix, Player player, String message) {
         player.sendMessage(prefix + " " + message);
     }

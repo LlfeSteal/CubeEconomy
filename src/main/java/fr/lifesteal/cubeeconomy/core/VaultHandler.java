@@ -1,9 +1,9 @@
 package fr.lifesteal.cubeeconomy.core;
 
-import fr.lifesteal.cubeeconomy.api.IVaultHandler;
 import fr.lifesteal.cubeeconomy.api.business.IAccountService;
 import fr.lifesteal.cubeeconomy.api.config.IConfigurationService;
 import fr.lifesteal.cubeeconomy.core.utils.Utils;
+import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import net.milkbowl.vault.economy.EconomyResponse.ResponseType;
 import org.bukkit.Bukkit;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class VaultHandler implements IVaultHandler {
+public class VaultHandler implements Economy {
     private static final String name = "CubeEconomy";
     private final IAccountService accountService;
     private final IConfigurationService configurationService;
@@ -24,14 +24,6 @@ public class VaultHandler implements IVaultHandler {
         this.plugin = plugin;
         this.accountService = accountService;
         this.configurationService = configurationService;
-
-
-        //Bukkit.getServer().getPluginManager().registerEvents(new EconomyServerListener(), plugin);
-    }
-
-    @Override
-    public void disable() {
-        plugin = null;
     }
 
     @Override
@@ -168,7 +160,7 @@ public class VaultHandler implements IVaultHandler {
 
     @Override
     public List<String> getBanks() {
-        return new ArrayList<String>();
+        return new ArrayList<>();
     }
 
     @Override

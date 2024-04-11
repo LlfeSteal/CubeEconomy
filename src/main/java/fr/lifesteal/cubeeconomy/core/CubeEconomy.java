@@ -20,7 +20,6 @@ public class CubeEconomy extends JavaPlugin {
     private static Economy economy;
     private IConfigurationService configurationService;
     private IAccountService accountService;
-    private IAccountRepository accountRepository;
 
     @Override
     public void onEnable() {
@@ -39,13 +38,13 @@ public class CubeEconomy extends JavaPlugin {
         this.configurationService.init();
 
         var connectionFactory = new ConnectionFactory(getLogger(), configurationService);
-        this.accountRepository = new AccountRepository(connectionFactory, configurationService);
-        this.accountRepository.createTableIfNotExist();
+        IAccountRepository accountRepository = new AccountRepository(connectionFactory, configurationService);
+        accountRepository.createTableIfNotExist();
 
         var accountManager = new AccountManager();
         accountManager.setPlayerAccounts(accountRepository.getAllAcounts());
 
-        this.accountService = new AccountService(this.accountRepository, this.configurationService, accountManager);
+        this.accountService = new AccountService(accountRepository, this.configurationService, accountManager);
     }
 
     private void setupEconomy() {

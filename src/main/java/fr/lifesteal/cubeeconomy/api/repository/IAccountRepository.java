@@ -2,7 +2,6 @@ package fr.lifesteal.cubeeconomy.api.repository;
 
 import fr.lifesteal.cubeeconomy.core.data.Account;
 
-import java.sql.SQLException;
 import java.util.List;
 import java.util.UUID;
 

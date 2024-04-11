@@ -1,7 +1,6 @@
 package fr.lifesteal.cubeeconomy.api.business;
 
 import net.milkbowl.vault.economy.EconomyResponse;
-import org.bukkit.OfflinePlayer;
 
 import java.util.UUID;
 

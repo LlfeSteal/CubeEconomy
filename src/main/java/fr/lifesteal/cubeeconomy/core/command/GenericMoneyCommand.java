@@ -11,7 +11,7 @@ public abstract class GenericMoneyCommand {
 
     protected final IConfigurationService configurationService;
     protected Player player;
-    private String[] args;
+    private final String[] args;
     protected Economy economy;
 
     public GenericMoneyCommand(IConfigurationService configurationService, Player player, String[] args) {
