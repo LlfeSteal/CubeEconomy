@@ -2,14 +2,15 @@ package fr.lifesteal.cubeeconomy.core.command;
 
 import fr.lifesteal.cubeeconomy.api.config.IConfigurationService;
 import fr.lifesteal.cubeeconomy.core.utils.Utils;
+import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.entity.Player;
 
 public class GiveCommand extends GenericMoneyCommand {
 
 
-    public GiveCommand(IConfigurationService configurationService, Player player, String[] args) {
-        super(configurationService, player, args);
+    public GiveCommand(IConfigurationService configurationService, Economy economy, Player player, String[] args) {
+        super(configurationService, economy, player, args);
     }
 
     @Override

@@ -8,16 +8,13 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.entity.Player;
 
 public class BalanceCommand extends GenericMoneyCommand {
-
-
-    public BalanceCommand(IConfigurationService configurationService, Player player, String[] args) {
-        super(configurationService, player, args);
+    public BalanceCommand(IConfigurationService configurationService, Economy economy, Player player, String[] args) {
+        super(configurationService, economy, player, args);
     }
 
     @Override
     public boolean execute() {
         OfflinePlayer target = this.getTargetPlayer();
-        Economy economy = CubeEconomy.getEconomy();
         String message = configurationService.getMessage("no-permission");
 
         if (target != null && player.hasPermission("cubeeconomy.balance.other")) {

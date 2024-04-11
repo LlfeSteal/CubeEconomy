@@ -26,11 +26,11 @@ public class CubeEconomy extends JavaPlugin {
         initServices();
         setupEconomy();
         setupMoneyListener();
-        getCommand("money").setExecutor(new MoneyCommandExecutor(new CommandDispatcher(this.configurationService)));
+        getCommand("money").setExecutor(new MoneyCommandExecutor(new CommandDispatcher(this.configurationService, economy)));
     }
 
     private void setupMoneyListener() {
-        getServer().getPluginManager().registerEvents(new MoneyListener(), this);
+        getServer().getPluginManager().registerEvents(new MoneyListener(economy), this);
     }
 
     private void initServices() {
@@ -65,9 +65,5 @@ public class CubeEconomy extends JavaPlugin {
         }
         economy = rsp.getProvider();
         return economy != null;
-    }
-
-    public static Economy getEconomy() {
-        return economy;
     }
 }
