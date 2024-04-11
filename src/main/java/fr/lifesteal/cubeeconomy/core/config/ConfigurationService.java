@@ -101,6 +101,8 @@ public class ConfigurationService implements IConfigurationService {
     }
 
     private void loadConfiguration() {
+        this.javaPlugin.reloadConfig();
+
         this.pluginPrefix = Utils.parseColors(this.fileConfiguration.getString("prefix"));
 
         this.databaseHost = this.fileConfiguration.getString("mysql.host");

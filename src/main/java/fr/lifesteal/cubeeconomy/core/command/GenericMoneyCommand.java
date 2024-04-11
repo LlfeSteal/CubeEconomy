@@ -24,7 +24,7 @@ public abstract class GenericMoneyCommand {
     public abstract boolean execute();
 
     public OfflinePlayer getTargetPlayer() {
-        return Bukkit.getPlayer(args[1]);
+        return args.length >= 2 ? Bukkit.getPlayer(args[1]) : null;
     }
 
     public double getTargetMoney() {

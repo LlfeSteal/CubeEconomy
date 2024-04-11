@@ -4,6 +4,8 @@ import fr.lifesteal.cubeeconomy.api.config.IConfigurationService;
 import fr.lifesteal.cubeeconomy.core.command.*;
 import org.bukkit.entity.Player;
 
+import java.util.Arrays;
+
 public class CommandDispatcher {
 
     private final IConfigurationService configurationService;
@@ -14,6 +16,7 @@ public class CommandDispatcher {
 
     public boolean dispatch(Player player, String[] args) {
         GenericMoneyCommand genericMoneyCommand;
+        System.out.println("ARGS : " + Arrays.toString(args));
         if (args.length > 0) {
             String command = args[0];
             switch (command) {
@@ -24,7 +27,7 @@ public class CommandDispatcher {
                 case "set" -> genericMoneyCommand = new SetCommand(configurationService, player, args);
                 case "giveall" -> genericMoneyCommand = new GiveAllCommand(configurationService, player, args);
                 default -> {
-                    Utils.sendPlayerMessage(configurationService.getPluginPrefix(), player, configurationService.getMessage("invalid-command"));
+                    Utils.sendPlayerMessage(configurationService.getPluginPrefix(), player, Utils.parse(configurationService.getMessage("invalid-command"), "%player%", command));
                     return false;
                 }
             }

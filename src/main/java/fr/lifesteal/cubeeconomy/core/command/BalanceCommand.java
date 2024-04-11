@@ -22,7 +22,7 @@ public class BalanceCommand extends GenericMoneyCommand {
 
         if (target != null && player.hasPermission("cubeeconomy.balance.other")) {
             String moneyString = economy.format(economy.getBalance(target));
-            message = configurationService.getMessage("display-money");
+            message = configurationService.getMessage("other-display-money");
             message = Utils.parse(message, "%player%", target.getName());
             message = Utils.parse(message, "%balance%", moneyString);
         } else if (player.hasPermission("cubeeconomy.balance")) {
