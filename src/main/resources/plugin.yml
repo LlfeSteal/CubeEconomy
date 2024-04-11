@@ -1,0 +1,42 @@
+name: CubeEconomy
+main: fr.lifesteal.cubeeconomy.CubeEconomy
+version: v1
+author: Lifesteal
+depend: [Vault]
+commands:
+  money:
+    description: Commande par défaut
+
+permissions:
+  cubeeconomy.balance:
+    description: Allows balance command
+    default: true
+  cubeeconomy.balance.other:
+    description: Allows balance command for another player
+    default: true
+  cubeeconomy.pay:
+    description: Allows pay command
+    default: true
+  cubeeconomy.give:
+    description: Allows give command
+    default: op
+  cubeeconomy.giveall:
+    description: Allows giveAll command
+    default: op
+  cubeeconomy.set:
+    description: Allows set command
+    default: op
+  cubeeconomy.take:
+    description: Allows set command
+    default: op
+  cubeeconomy.*:
+    description: Allows all commands
+    default: op
+    children:
+      cubeeconomy.balance: true
+      cubeeconomy.pay: true
+      cubeeconomy.give: true
+      cubeeconomy.set: true
+      cubeeconomy.take: true
+      cubeeconomy.balance.other: true
+      cubeeconomy.giveall: true

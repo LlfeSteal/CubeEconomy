@@ -1,0 +1,32 @@
+prefix: '&f[&aCubeEconomy&f]'
+
+mysql:
+  host: localhost
+  name: asgardia
+  port: 3306
+  user: root
+  pass: ''
+  prefix: 'playerMoney_'
+
+money:
+  default-money: 0.0
+  single: dollar
+  multiple: dollars
+  symbol: $
+
+messages:
+  invalid-command: "&cCommande &f%command% &cnot found"
+  unknown-error: "&cUnknow error occured"
+  no-permission: "&cYou don't have the permission to use this command"
+  display-money: "&aYou have &f%balance% "
+  other-display-money: "The player %player% has %balance%"
+  send-money: "&aYou just send &f%amount% &ato %player%"
+  receive-money: "&aYou received %amount% &afrom %player%"
+  give-money: "&aYou just gave &f%amount% &ato %player%"
+  give-receive-money: "The player %player% gave you %amount%"
+  set-money: "You set %player% money to %amount%"
+  player-set-money: "Your money has been set to %amount% by %player%"
+  take-money: "You take %amount% from %player%"
+  player-take-money: "The player %player% took you %amount%"
+  succes-giveall: "You just sent %amount% to all connected players"
+  player-display-money: "The player %player% has %balance%"
