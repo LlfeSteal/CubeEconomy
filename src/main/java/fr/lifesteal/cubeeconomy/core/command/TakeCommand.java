@@ -1,14 +1,14 @@
-package fr.lifesteal.cubeeconomy.command;
+package fr.lifesteal.cubeeconomy.core.command;
 
-import fr.lifesteal.cubeeconomy.data.Config;
-import fr.lifesteal.cubeeconomy.utils.Utils;
+import fr.lifesteal.cubeeconomy.api.config.IConfigurationService;
+import fr.lifesteal.cubeeconomy.core.utils.Utils;
 import net.milkbowl.vault.economy.EconomyResponse;
 import org.bukkit.entity.Player;
 
 public class TakeCommand extends GenericMoneyCommand {
 
-    public TakeCommand(Player player, String[] args) {
-        super(player, args);
+    public TakeCommand(IConfigurationService configurationService, Player player, String[] args) {
+        super(configurationService, player, args);
     }
 
     @Override
@@ -16,23 +16,23 @@ public class TakeCommand extends GenericMoneyCommand {
         if (player.hasPermission("cubeeconomy.take")) {
             EconomyResponse deposit = economy.depositPlayer(getTargetPlayer(), getTargetMoney());
             if (deposit.transactionSuccess()) {
-                String giverMessage = Config.getInstance().getMessage("take-money");
+                String giverMessage = configurationService.getMessage("take-money");
                 giverMessage = Utils.parse(giverMessage, "%amount%", economy.format(getTargetMoney()));
                 giverMessage = Utils.parse(giverMessage, "%player%", getTargetPlayer().getName());
-                Utils.sendPlayerMessage(player, giverMessage);
+                Utils.sendPlayerMessage(configurationService.getPluginPrefix(), player, giverMessage);
                 if (getTargetPlayer().isOnline()) {
                     Player targetPlayer = (Player) getTargetPlayer();
-                    String receiverMessage = Config.getInstance().getMessage("player-take-money");
+                    String receiverMessage = configurationService.getMessage("player-take-money");
                     receiverMessage = Utils.parse(receiverMessage, "%amount%", economy.format(getTargetMoney()));
                     receiverMessage = Utils.parse(receiverMessage, "%player%", player.getName());
-                    Utils.sendPlayerMessage(targetPlayer, receiverMessage);
+                    Utils.sendPlayerMessage(configurationService.getPluginPrefix(), targetPlayer, receiverMessage);
                 }
                 return true;
             }
-            Utils.sendPlayerMessage(player, Config.getInstance().getMessage("unknown-error"));
+            Utils.sendPlayerMessage(configurationService.getPluginPrefix(), player, configurationService.getMessage("unknown-error"));
             return false;
         }
-        Utils.sendPlayerMessage(player, Config.getInstance().getMessage("no-permission"));
+        Utils.sendPlayerMessage(configurationService.getPluginPrefix(), player, configurationService.getMessage("no-permission"));
         return false;
     }
 }

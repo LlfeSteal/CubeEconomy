@@ -1,5 +1,5 @@
 name: CubeEconomy
-main: fr.lifesteal.cubeeconomy.CubeEconomy
+main: fr.lifesteal.cubeeconomy.core.CubeEconomy
 version: v1
 author: Lifesteal
 depend: [Vault]

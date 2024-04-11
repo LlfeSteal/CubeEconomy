@@ -1,19 +1,19 @@
-package fr.lifesteal.cubeeconomy.command;
+package fr.lifesteal.cubeeconomy.core.command;
 
-import fr.lifesteal.cubeeconomy.data.Config;
-import fr.lifesteal.cubeeconomy.utils.Utils;
+import fr.lifesteal.cubeeconomy.api.config.IConfigurationService;
+import fr.lifesteal.cubeeconomy.core.utils.Utils;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 public class GiveAllCommand extends GenericMoneyCommand {
 
-    public GiveAllCommand(Player player, String[] args) {
-        super(player, args);
+    public GiveAllCommand(IConfigurationService configurationService, Player player, String[] args) {
+        super(configurationService, player, args);
     }
 
     @Override
     public boolean execute() {
-        String message = Config.getInstance().getMessage("no-permission");
+        String message = configurationService.getMessage("no-permission");
         if (player.hasPermission("cubeeconomy.giveall")) {
             for (Player onlinePlayer : Bukkit.getOnlinePlayers()) {
                 Player currentPlayer = onlinePlayer.getPlayer();
@@ -21,13 +21,13 @@ public class GiveAllCommand extends GenericMoneyCommand {
                     String[] args = new String[3];
                     args[1] =  currentPlayer.getName();
                     args[2] = String.valueOf(this.getTargetMoney());
-                    GiveCommand giveCommand = new GiveCommand(player, args);
+                    GiveCommand giveCommand = new GiveCommand(configurationService, player, args);
                     giveCommand.execute();
                 }
             }
-            message = Config.getInstance().getMessage("succes-giveall");
+            message = configurationService.getMessage("succes-giveall");
         }
-        Utils.sendPlayerMessage(player, message);
+        Utils.sendPlayerMessage(configurationService.getPluginPrefix(), player, message);
         return false;
     }
 

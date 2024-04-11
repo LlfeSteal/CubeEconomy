@@ -1,4 +1,4 @@
-package fr.lifesteal.cubeeconomy.data;
+package fr.lifesteal.cubeeconomy.core.data;
 
 import java.util.UUID;
 
